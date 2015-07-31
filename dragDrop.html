@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+	   #div1, #div2, #div3 {
+	      border:1px solid;
+		  color:red;
+		  width:200px;
+		  height:100px;
+		  margin-bottom:10px;
+		  
+	   }
+	</style>
+	<script type="text/javascript"> 
+		function drag(event) {
+		   event.dataTransfer.setData("Text", event.target.id);
+		   
+		}
+		function drop(event){
+		//debugger;	
+			event.preventDefault();
+			var data = event.dataTransfer.getData("Text");
+			event.target.appendChild(document.getElementById(data));
+			document.getElementById('output').innerHTML = event.target.id;
+		}
+	</script>
+</head>
+ <body>
+ <h1> Drag and Drop Feature </h1>
+ Div1
+ <div id="div1" ondrop="drop(event)" ondragover="drop(event)"> </div>
+  Div2
+  <div id="div2" ondrop="drop(event)" ondragover="drop(event)"> </div>
+  Div3
+  <div id="div3" ondrop="drop(event)" ondragover="drop(event)"> </div>
+ <img src="C:\Users\Public\Pictures\Sample Pictures\Hydrangeas.jpg" width="200" height="100" id="drag1" draggable="true" ondragstart="drag(event)" style="cursor:pointer" />
+ <div id="text1" draggable="true" ondragstart="drag(event)">hello, please pick me and drop some where ? </div>
+</br>
+ Location:<span id="output" style="color:blue"> </span>
+ </body> 
+</html>
